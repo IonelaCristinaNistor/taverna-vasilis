@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Reservation from './reservation.astro';
+import home from './index.astro';
+import Restaurant from './restaurant.astro';
+import Contact from './contact.astro';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+---
+
+<html data-theme="coffee" class="bg-black min-h-screen flex flex-col">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+</head>
+<Layout  title="Taverna Vasilis">
+	<main class="flex-grow">
+  	<div id="topbar" class="navbar bg-black">
+  <div class="flex-1">
+    <a href="https://maps.app.goo.gl/qsJArbKcjbrU26Rt9" class="btn btn-ghost text-xs">
+			<i class="fa-regular fa-map"></i>Gothaer Str.2 99885 Ohrdruf
+		</a>
+		<a href="https://www.instagram.com/a" class="btn btn-ghost text-sm">
+			<i class="fa-brands fa-instagram"></i>
+		</a>
+		<a href="https://www.facebook.com/" class="btn btn-ghost text-sm">
+			<i class="fa-brands fa-facebook"></i>
+		</a>
+  </div>
+  <div class="flex-0">
+			<a class="btn btn-ghost text-sm" href=""><i class="fa-solid fa-phone"></i>+76543332454</a>
+			<a href="btn btn-ghost text-sm"><i class="fa-regular fa-envelope"></i> booking@restaurant.com</a>
+  </div>
+  </div>
+
+<div class="navbar bg-black">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <li><a href="/index" class="text-xl underline underline-offset-8">Home</a></li>
+			<li><a href="/reservation" class="text-xl hover:underline underline-offset-8">Reservation</a></li>
+      <li><a href="" class="text-xl hover:underline underline-offset-8">Menus</a></li>
+			<li><a href="/restaurant" class="text-xl hover:underline underline-offset-8">Restaurant</a></li>
+      <li><a href="/contact" class="text-xl hover:underline underline-offset-8">Contact</a></li>
+      </ul>
+    </div>
+    <img src="logo.jpg" class="w-40">
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="http://localhost:4321/" class="text-xl underline underline-offset-8 hover:animate-jump">Home</a></li>
+			<li><a href="/reservation" class="text-xl hover:animate-jump hover:underline underline-offset-8">Reservation</a></li>
+      <li><a href="" class="text-xl hover:animate-jump hover:underline underline-offset-8">Menus</a></li>
+			<li><a href="/restaurant" class="text-xl hover:animate-jump hover:underline underline-offset-8">Restaurant</a></li>
+      <li><a href="/contact" class="text-xl hover:animate-jump hover:underline underline-offset-8">Contact</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a href="/reservation" class="btn btn-outline btn-primary text-xl px-10 mx-20 hover:animate-wiggle"> Reservation</a>
+  </div>
+</div>
+
+<div class="hero min-h-screen" style="background-image"> <img class="animate-hero animate-delay-1000" src="hero-slider-3.jpg" alt="hero-background">
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center text-neutral-content">
+    <div class="max-w-screen">
+      <h1 class="font-forum tracking-widest text-9xl mb-10">Taverna Vasilis</h1>
+      <p class="font-serif font-semibold text-6xl mb-10">Griechische Spezialitäten</p>
+      <button class="btn btn-primary text-xl"><p class="mx-10 font-bold tracking-wide">Menu</p></button>
+    </div>
+  </div>
+</div>
+
+<div id="services" class="grid grid-cols-3 gap-1 place-content-center mx-10">
+<div class="card w-96 bg-transparent shadow-xl h-max">
+  <figure class="px-10 pt-10 mt-56">
+    <img src="img-pattern.svg" class="h-96 hover:[transform:rotateX(180deg)]">
+    <img src="service-1.jpg" alt="Shoes" class="absolute rounded-xl h-80 hover:brightness-125 hover:animate-jump"/>
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title mb-8 text-4xl font-forum font-thin tracking-wide text-orange-100">Breakfast</h2>
+    <div class="card-actions">
+      <button class="btn btn-outline btn-primary">VIEW MENU</button>
+    </div>
+  </div>
+</div>
+<div class="card w-96 bg-transparent shadow-xl">
+<div class="flex flex-col items-center justify-center h-max my-10 text-center">
+  <p class="text-xl font-bold tracking-widest font-forum mb-4">Flavors For Royalty</p>
+  <img src="separator.svg" class="w-28 mb-6" alt="separator">
+  <h2 class="text-5xl font-forum text-white">We Offer Top Notch</h2>
+  <p class="text-xl text-center mt-4 font-serif">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys
+    standard dummy text ever.
+  </p>
+</div>
+  <figure class="px-10 pt-1">
+    <img src="img-pattern.svg" class="h-96 hover:[transform:rotateX(180deg)]">
+    <img src="service-2.jpg" alt="Appetizers" class="absolute rounded-xl h-80 hover:brightness-125 hover:animate-jump" />
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title mb-8 text-4xl font-forum font-thin tracking-wide text-orange-100">Appetizers</h2>
+    <div class="card-actions">
+      <button class="btn btn-outline btn-primary">VIEW MENU</button>
+    </div>
+  </div>
+</div>
+<div class="card w-96 bg-transparent shadow-xl h-max">
+  <figure class="px-10 pt-10 mt-56">
+    <img src="img-pattern.svg" class="h-96 hover:[transform:rotateX(180deg)]">
+    <img src="service-3.jpg" alt="Drinks" class="absolute rounded-xl h-80 hover:brightness-125 hover:animate-jump" />
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title mb-8 text-4xl font-forum font-thin tracking-wide text-orange-100">Drinks</h2>
+    <div class="card-actions">
+      <button class="btn btn-outline btn-primary">VIEW MENU</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="about" class="grid grid-cols-2 gap-12 place-content-center mx-10">
+<div class="flex flex-col items-center justify-center h-max my-10 text-center">
+  <p class="text-xl font-bold tracking-widest font-forum mb-4">OUR STORY</p>
+  <img src="separator.svg" class="w-28 mb-6" alt="separator">
+  <h2 class="text-5xl font-forum text-white">Every Flavor Tells a Story</h2>
+  <p class="text-2xl text-center mt-10 w-96 font-serif">
+    Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the industrys 
+    standard dummy text ever since the when an unknown printer took a galley of type and scrambled 
+    it to make a type specimen book It has survived not only five centuries, but also the leap into.
+  </p>
+  <button class="mt-20 btn btn-outline btn-primary btn-wide text-xl">VIEW MENU</button>
+</div>
+
+<div class="my-10">
+  <img src="about-banner.jpg" alt="">
+</div>
+</div>
+
+<div id="Menu" class="my-20">
+  <div class="flex flex-col items-center justify-center h-max my-10 text-center">
+    <p class="text-xl font-bold tracking-widest font-forum mb-4">OUR STORY</p>
+    <img src="separator.svg" class="w-28 mb-6" alt="separator">
+    <h2 class="text-5xl font-forum text-white">Every Flavor Tells a Story</h2>
+  </div>
+  <div class="grid grid-cols-2 gap-12 place-content-center mx-56">
+    <div class="card-banner flex">
+      <img src="menu-1.png" alt="Greek Salad" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Greek Salad</h1>
+        <p class="">Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.</p>  
+      </div>
+    </div>
+    <div class="card-banner flex">
+      <img src="menu-2.png" alt="" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Lasagne</h1>
+        <p class="">Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices.</p>  
+      </div>
+    </div>
+    <div class="card-banner flex">
+      <img src="menu-3.png" alt="" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Butternut Pumpkin</h1>
+        <p class="">Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.</p>  
+      </div>
+    </div>
+    <div class="card-banner flex">
+      <img src="menu-4.png" alt="" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Tokusen Wagyu</h1>
+        <p class="">Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.</p>  
+      </div>
+    </div>
+    <div class="card-banner flex">
+      <img src="menu-5.png" alt="" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Olives Rellenas</h1>
+        <p class="">Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.</p>  
+      </div>
+    </div>
+    <div class="card-banner flex">
+      <img src="menu-6.png" alt="" class="w-28 h-28 float-left transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+      <div class="ml-6">
+        <h1 class="text-xl font-forum font-semibold tracking-widest text-orange-200">Opu Fish</h1>
+        <p class="">Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.</p>  
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-wide hover:bg-orange-200 ml-20 mt-20 text-xl font-semibold">VIEW ALL MENU</button>
+</div>
+
+<div id="testimonials" class="grid grid-cols-4 gap-12 mx-10 my-10 justify-items-center items-center">
+  <div class="border-2 border-orange-300 rounded-3xl w-80 h-auto block-inline text-center flex flex-col justify-center items-center">
+    <p class="text-9xl font-forum text-center mt-3">”</p>
+    <p class="mx-2">
+      Ich wollte mich dafür bedanken, dass du mich letzten Abend zum 
+      fantastischen Abendessen eingeladen hast. Das Essen war außergewöhnlich.
+    </p>
+    <img src="testi-avatar.jpg" alt="" class="rounded-full w-28 h-28 my-10">
+  </div>
+  <div class="border-2 border-orange-300 rounded-3xl w-80 h-auto block-inline text-center flex flex-col justify-center items-center">
+    <p class="text-9xl font-forum text-center mt-3">”</p>
+    <p class="mx-2">
+      Ich wollte mich dafür bedanken, dass du mich letzten Abend zum 
+      fantastischen Abendessen eingeladen hast. Das Essen war außergewöhnlich.
+    </p>
+    <img src="testi-avatar.jpg" alt="" class="rounded-full w-28 h-28 my-10">
+  </div>
+  <div class="border-2 border-orange-300 rounded-3xl w-80 h-auto block-inline text-center flex flex-col justify-center items-center">
+    <p class="text-9xl font-forum text-center mt-3">”</p>
+    <p class="mx-2">
+      Ich wollte mich dafür bedanken, dass du mich letzten Abend zum 
+      fantastischen Abendessen eingeladen hast. Das Essen war außergewöhnlich.
+    </p>
+    <img src="testi-avatar.jpg" alt="" class="rounded-full w-28 h-28 my-10">
+  </div>
+  <div class="border-2 border-orange-300 rounded-3xl w-80 h-auto block-inline text-center flex flex-col justify-center items-center">
+    <p class="text-9xl font-forum text-center mt-3">”</p>
+    <p class="mx-2">
+      Ich wollte mich dafür bedanken, dass du mich letzten Abend zum 
+      fantastischen Abendessen eingeladen hast. Das Essen war außergewöhnlich.
+    </p>
+    <img src="testi-avatar.jpg" alt="" class="rounded-full w-28 h-28 my-10">
+  </div>
+</div>
+
+<div class="google-map">
+  <iframe style="filter: invert(100%)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.0441625187277!2d10.732327100000001!3d50.8303459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a387a2ca359813%3A0x72e9c1db433442b3!2sGothaer%20Str.%202%2C%2099885%20Ohrdruf%2C%20Germania!5e0!3m2!1sro!2sro!4v1700773181778!5m2!1sro!2sro" 
+    class="w-full h-72" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+
+<footer class="mt-auto bg-footer-bg bg-cover pt-20">
+<nav class="footer p-10 text-base-content text-xl flex justify-between items-center"> 
+  <nav class="pt-20 pl-40 gap-6 justify-items-center">
+    <a href="/index" class="link link-hover hover:underline underline-offset-8">Home</a>
+    <a href="" class="link link-hover hover:underline underline-offset-8">Menus</a>
+    <a href="/contact" class="link link-hover hover:underline underline-offset-8">Contact</a>
+    <a href="/restaurant" class="link link-hover hover:underline underline-offset-8">Restaurant</a>
+    <a href="/reservation" class="link link-hover hover:underline underline-offset-8">Reservation</a>
+  </nav>
+  <div class="relative">
+  <img src="/logo.jpg" alt="Image 1" class="absolute w-40 top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+  <div class="absolute flex flex-col space-y-4 py-80 justify-self-center place-items-center">
+    <a href="" class="text-orange-200">Gothaer Str. 2, 99885 Ohrdruf</a>
+    <a href="" class="text-orange-200">booking@.com</a>
+    <a href="" class="text-orange-200">Booking Request : +88-123-123456</a>
+    <a class="text-orange-200">Open : 09:00 am - 01:00 pm</a>
+  </div>
+  <img src="footer-form-bg.png" class="max-w-none w-full">
+  <img src="footer-form-pattern.svg" class="absolute h-full">
+  <img src="footer-form-pattern.svg" class="absolute h-full justify-self-end">
+  </div>
+  <nav class=" pt-20 pr-40 gap-6 justify-end justify-items-center">
+    <a class="link link-hover">Facebook</a>
+    <a class="link link-hover">Instagram</a>
+    <a class="link link-hover">Google Map</a>
+  </nav>
+  </nav>
+    <aside class="flex justify-center py-16 text-xl">
+    <p>Copyright © 2023 - Taverna Vasilis</p>
+  </aside>
+</footer>
+	</main>
+</Layout>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
+.font-forum {
+  font-family: 'Forum', cursive;
+}
+</style>
