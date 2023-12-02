@@ -1,234 +1,141 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Layout from '../layouts/Layout.astro';
 
+export const prerender = false
+
+import sendGrid from '@sendgrid/mail';
+sendGrid.setApiKey(import.meta.env.SENDGRID_API_KEY);
+
+async function sendEmail(data) {
+  const { name, phone, email, person, date, time, message } = data;
+  const emailMessage = `
+    Name: ${name}
+    Phone: ${phone}
+    Number of Persons: ${person}
+    Date: ${date}
+    Time: ${time}
+    Message: ${message}
+  `;
+
+  const msg = {
+    to: 'tanulchristian@gmail.com', // Change to your recipient
+    from: 'Taverna Vasilis Reservations <contact@pyoneers.dev>', // Change to your verified sender
+    replyTo: email,
+    subject: `New Reservation from ${name}`,
+    text: emailMessage,
+  };
+
+  try {
+    await sendGrid.send(msg);
+    console.log('Email sent');
+  } catch (error) {
+    console.error('Email sending error:', error.response.body);
+  }
+}
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const formEntries = Object.fromEntries(formData);
+  // Basic validation could be added here
+  await sendEmail(formEntries);
+}
 ---
-<html data-theme="coffee" class="bg-black min-h-screen flex flex-col">
-<head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-</head>
-<Layout  title="Reservation">
-	<main class="flex-grow">
-  	<div id="topbar" class="navbar bg-black">
-  <div class="flex-1">
-    <a href="https://maps.app.goo.gl/qsJArbKcjbrU26Rt9" class="btn btn-ghost text-xs">
-			<i class="fa-regular fa-map"></i>Gothaer Str.2 99885 Ohrdruf
-		</a>
-		<a href="https://www.instagram.com/a" class="btn btn-ghost text-sm">
-			<i class="fa-brands fa-instagram"></i>
-		</a>
-		<a href="https://www.facebook.com/" class="btn btn-ghost text-sm">
-			<i class="fa-brands fa-facebook"></i>
-		</a>
-  </div>
-  <div class="flex-0">
-			<a class="btn btn-ghost text-sm" href=""><i class="fa-solid fa-phone"></i>+76543332454</a>
-			<a href="btn btn-ghost text-sm"><i class="fa-regular fa-envelope"></i> booking@restaurant.com</a>
-  </div>
-  </div>
+<Layout title='Taverna Vasilis'>
 
-<div class="navbar bg-black">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <li><a href="/" class="text-xl hover:underline underline-offset-8">Home</a></li>
-			<li><a href="/reservation" class="text-xl underline hover:underline underline-offset-8">Reservation</a></li>
-      <li><a href="" class="text-xl hover:underline underline-offset-8">Menus</a></li>
-			<li><a href="/restaurant" class="text-xl hover:underline underline-offset-8">Restaurant</a></li>
-      <li><a href="/contact" class="text-xl hover:underline underline-offset-8">Contact</a></li>
-      </ul>
-    </div>
-    <img src="logo.jpg" class="w-40">
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a href="/" class="text-xl hover:underline underline-offset-8 hover:animate-jump">Home</a></li>
-			<li><a href="/reservation" class="text-xl hover:animate-jump underline hover:underline underline-offset-8">Reservation</a></li>
-      <li><a href="" class="text-xl hover:animate-jump hover:underline underline-offset-8">Menus</a></li>
-			<li><a href="/restaurant" class="text-xl hover:animate-jump hover:underline underline-offset-8">Restaurant</a></li>
-      <li><a href="/contact" class="text-xl hover:animate-jump hover:underline underline-offset-8">Contact</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end">
-    <a href="/reservation" class="btn btn-outline btn-primary text-xl px-10 mx-20 hover:animate-wiggle"> Reservation</a>
-  </div>
-</div>
+  <div class="flex flex-row justify-center items-center md:flex-col md:mx-10 sm:justify-center">
+    <div class="grid grid-cols-1 gap-4 my-10 text-center md:grid-cols-2">
 
-<div class="hero min-h-screen" style="background-image"> <img class="animate-hero animate-delay-1000" src="../public/hero-slider-3.jpg" alt="hero-background">
-  <div class="hero-overlay bg-opacity-60"></div>
-  <div class="hero-content text-center text-neutral-content">
-    <div class="max-w-screen">
-      <h1 class="font-forum tracking-widest text-9xl mb-10">~ Reservation ~</h1>
-      <h1 class="font-forum tracking-widest text-7xl mb-10">Taverna Vasilis</h1>
-      <p class="font-serif font-semibold text-6xl mb-10">Griechische Spezialitäten</p>
-      <button class="btn btn-primary text-xl"><p class="mx-10 font-bold tracking-wide">Menu</p></button>
-    </div>
-  </div>
-</div>
+      <div class="my-20 mx-10 text-xl">
+        <form action="/reservation" method="POST">
 
-<section class="section reservation">
-  <div class="flex justify-center items-center h-screen">
-  <div class="grid grid-cols-2 gap-4 h-max my-10 text-center">
+          <h2 class="text-6xl text-center font-forum tracking-wider">Online Reservation</h2>
 
-    <div class="my-20 text-xl bg-black">
+          <p class="my-4 text-orange-200">
+            Booking request <a href="tel:+03624 3187850" class="link text-orange-400">+03624 3187850</a>
+            or fill out the order form
+          </p>
 
-      <form action="" method="POST" class="form-left">
+          <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-5">
+            <input class="input input-bordered input-primary w-full max-w-xs bg-transparent placeholder:text-base-content" type="text" name="name" placeholder="Your Name *" autocomplete="on" required>
+            <input class="input input-bordered input-primary w-full max-w-xs bg-transparent placeholder:text-base-content" type="tel" name="phone" placeholder="Phone Number *" autocomplete="on" pattern="[0-9]*" title="Please enter only numeric characters" required>
+          </div>
 
-        <h2 class="text-6xl text-center font-forum tracking-wider">Online Reservation</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            <div class="relative">
+              <select class="input input-bordered input-primary w-full md:max-w-xs bg-transparent" name="person" required>
+                <option value="1-person">1 Person</option>
+                <option value="2-person">2 Person</option>
+                <option value="3-person">3 Person</option>
+                <option value="4-person">4 Person</option>
+                <option value="5-person">5 Person</option>
+                <option value="6-person">6 Person</option>
+                <option value="7-person">7 Person</option>
+              </select>
+              <ion-icon name="person-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
+            </div>
 
-        <p class="my-4 text-orange-200">
-          Booking request <a href="tel:+88123123456" class="link text-orange-400">+88-123-123456</a>
-          or fill out the order form
+            <div class="relative">
+              <input class="input input-bordered input-primary w-full md:max-w-xs bg-transparent placeholder:text-base-content" type="date" name="date" required>
+              <ion-icon name="calendar-clear-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
+            </div>
+
+            <div class="relative">
+              <select class="input input-bordered input-primary w-full md:max-w-xs bg-transparent" name="time" required>
+                <option value="011:00am">11 : 00</option>
+                <option value="012:00am">12 : 00</option>
+                <option value="01:00pm">13 : 00</option>
+                <option value="02:00pm">14 : 00</option>
+                <option value="05:00pm">17 : 00</option>
+                <option value="06:00pm">18 : 00</option>
+                <option value="07:00pm">19 : 00</option>
+                <option value="08:00pm">20 : 00</option>
+                <option value="09:00pm">21 : 00</option>
+                <option value="10:00pm">22 : 00</option>
+              </select>
+              <ion-icon name="time-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
+            </div>
+          </div>
+
+          <div>
+            <input class="input input-bordered flex justify-center input-primary w-full bg-transparent placeholder:text-base-content mb-5" type="email" name="email" placeholder="Email * " autocomplete="on" required>
+          </div>
+
+          <textarea class="input input-bordered flex justify-start input-primary w-full bg-transparent h-20 mb-5 py-2 placeholder:text-base-content" name="message" placeholder="Message .  .  . " autocomplete="off"></textarea>
+
+          <button type="submit" class="btn btn-primary mt-1">
+            <span class="text-xl font-forum w-40">Book now</span>
+          </button>
+
+        </form>
+      </div>
+
+      <div class="font-forum text-center text-xl space-y-3 my-20 py-8 mx-10 border border-base-content rounded-xl">
+        <h2 class="text-5xl text-center tracking-wide">Contact Us</h2>
+
+        <p class="text-orange-200">Booking Request</p>
+
+        <a href="tel:+88123123456" class="hover:underline">+03624 3187850</a>
+
+        <p class="text-orange-200">Location</p>
+
+        <a href="https://maps.app.goo.gl/sECpygX6nF4FQqpf7" class="hover:underline">Gothaer Str. 2, 99885 Ohrdruf</a>
+
+        <p class="text-orange-200">Lunch Time</p>
+
+        <p>
+          Monday to Sunday <br>
+          11:00 - 14:00
+
         </p>
 
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-5">
-          <input class="input input-bordered input-primary w-full max-w-xs bg-transparent" type="text" name="name" placeholder="Your Name *" autocomplete="on" required>
-          <input class="input input-bordered input-primary w-full max-w-xs bg-transparent" type="tel" name="phone" placeholder="Phone Number *" autocomplete="on" pattern="[0-9]*" title="Please enter only numeric characters" required>
-        </div>
+        <p class="text-orange-200">Dinner Time</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-          <div class="relative">
-            <select class="input input-bordered input-primary w-full max-w-xs bg-transparent" name="person" required>
-              <option value="1-person">1 Person</option>
-              <option value="2-person">2 Person</option>
-              <option value="3-person">3 Person</option>
-              <option value="4-person">4 Person</option>
-              <option value="5-person">5 Person</option>
-              <option value="6-person">6 Person</option>
-              <option value="7-person">7 Person</option>
-            </select>
-            <ion-icon name="person-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-
-          <div class="relative">
-            <input  class="input input-bordered input-primary w-full max-w-xs bg-transparent"type="date" name="reservation-date" required>
-            <ion-icon name="calendar-clear-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-
-          <div class="relative">
-            <select class="input input-bordered input-primary w-full max-w-xs bg-transparent" name="time" required>
-              <option value="08:00am">08 : 00</option>
-              <option value="09:00am">09 : 00</option>
-              <option value="010:00am">10 : 00</option>
-              <option value="011:00am">11 : 00</option>
-              <option value="012:00am">12 : 00</option>
-              <option value="01:00pm">13 : 00</option>
-              <option value="02:00pm">14 : 00</option>
-              <option value="03:00pm">15 : 00</option>
-              <option value="04:00pm">16 : 00</option>
-              <option value="05:00pm">17 : 00</option>
-              <option value="06:00pm">18 : 00</option>
-              <option value="07:00pm">19 : 00</option>
-              <option value="08:00pm">20 : 00</option>
-              <option value="09:00pm">21 : 00</option>
-              <option value="10:00pm">22 : 00</option>
-            </select>
-            <ion-icon name="time-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-        </div>
-
-        <div>
-          <input class="input input-bordered flex justify-center input-primary w-full max-w-xs bg-transparent mb-5" type="email" name="email" placeholder="Email * " autocomplete="on" required>
-        </div>
-
-        <textarea class="input input-bordered flex justify-start input-primary w-full max-w-xs bg-transparent h-20 mb-5" name="message" placeholder="Message .  .  . " autocomplete="off"></textarea>
-
-        <button type="submit" class="btn btn-primary">
-          <span class="text-2xl font-forum w-60">Book A Table</span>
-        </button>
-
-      </form>
-
-     </div>
-
-     <div class="font-forum text-center text-xl space-y-3 mx-20 mb-20" style="background-image: url('form-pattern.png')">
-
-      <h2 class="text-5xl mt-20 mb-6 text-center tracking-wide">Contact Us</h2>
-
-      <p class="text-orange-200">Booking Request</p>
-
-      <a href="tel:+88123123456" class="hover:underline">+88-123-123456</a>
-
-      <p class="text-orange-200">Location</p>
-
-      <address>
-        Gothaer Str. 2, 99885 Ohrdruf
-      </address>
-
-      <p class="text-orange-200">Lunch Time</p>
-
-      <p>
-        Monday to Sunday <br>
-        11.00 am - 2.30pm
-      </p>
-
-      <p class="text-orange-200">Dinner Time</p>
-
-      <p>
-        Monday to Sunday <br>
-        05.00 pm - 10.00pm
-      </p>
-
+        <p>
+          Monday to Sunday <br>
+          17:00 - 22:00
+        </p>
+      </div>
     </div>
   </div>
-
-  </div>
-</section>
-
-<div class="google-map">
-  <iframe style="filter: invert(100%)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.0441625187277!2d10.732327100000001!3d50.8303459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a387a2ca359813%3A0x72e9c1db433442b3!2sGothaer%20Str.%202%2C%2099885%20Ohrdruf%2C%20Germania!5e0!3m2!1sro!2sro!4v1700773181778!5m2!1sro!2sro" 
-    class="w-full h-72" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-
-
-<footer class="mt-auto bg-footer-bg bg-cover pt-20">
-<nav class="footer p-10 text-base-content text-xl flex justify-between items-center"> 
-  <nav class="pt-20 pl-40 gap-6 justify-items-center">
-    <a href="/" class="link link-hover hover:underline underline-offset-8">Home</a>
-    <a href="" class="link link-hover hover:underline underline-offset-8">Menus</a>
-    <a href="/contact" class="link link-hover hover:underline underline-offset-8">Contact</a>
-    <a href="/restaurant" class="link link-hover hover:underline underline-offset-8">Restaurant</a>
-    <a href="/reservation" class="link link-hover hover:underline underline-offset-8">Reservation</a>
-  </nav>
-  <div class="relative">
-  <img src="/logo.jpg" alt="Image 1" class="absolute w-40 top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-  <div class="absolute flex flex-col space-y-4 py-80 justify-self-center place-items-center">
-    <a href="" class="text-orange-200">Gothaer Str. 2, 99885 Ohrdruf</a>
-    <a href="" class="text-orange-200">booking@.com</a>
-    <a href="" class="text-orange-200">Booking Request : +88-123-123456</a>
-    <a class="text-orange-200">Open : 09:00 am - 01:00 pm</a>
-  </div>
-  <img src="footer-form-bg.png" class="max-w-none w-full">
-  <img src="footer-form-pattern.svg" class="absolute h-full">
-  <img src="footer-form-pattern.svg" class="absolute h-full justify-self-end">
-  </div>
-  <nav class=" pt-20 pr-40 gap-6 justify-end justify-items-center">
-    <a class="link link-hover">Facebook</a>
-    <a class="link link-hover">Instagram</a>
-    <a class="link link-hover">Google Map</a>
-  </nav>
-  </nav>
-    <aside class="flex justify-center py-16 text-xl">
-    <p>Copyright © 2023 - Taverna Vasilis</p>
-  </aside>
-</footer>
-	</main>
 </Layout>
-</html>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
-
-.font-forum {
-  font-family: 'Forum', cursive;
-}
-</style>

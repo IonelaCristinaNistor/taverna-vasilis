@@ -1,0 +1,19 @@
+---
+import ContactCard from './ContactCard.astro';
+import phoneSolidSvg from '../../images/phone-solid1.svg';
+import mapRegularSvg from '../../images/mapRegular.svg';
+import atSolidSvg from '../../images/atSolid.svg';
+---
+<div id="contact-options" class="flex justify-center my-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+    <a href="tel:+03624 3187850">
+        <ContactCard image={phoneSolidSvg} h="Give Us A Call" text="Lorem Ipsum is simply dummy printing and typesetting."/>
+    </a>
+    <a href="https://maps.app.goo.gl/sECpygX6nF4FQqpf7">
+        <ContactCard image={mapRegularSvg} h="Visit Our Place" text="Lorem Ipsum is simply dummy printing and typesetting."/>
+    </a>
+    <a href="mailto:Vasa@tavernavasilis.com">
+        <ContactCard image={atSolidSvg} h="Send An Email" text="Lorem Ipsum is simply dummy printing and typesetting."/>
+    </a>
+    </div>
+</div>

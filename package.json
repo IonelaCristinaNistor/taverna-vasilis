@@ -11,18 +11,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.5",
-    "@astrojs/netlify": "^3.0.4",
-    "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^5.2.0",
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^7.0.0",
     "@fortawesome/fontawesome-free": "^6.4.2",
-    "astro": "^3.5.5",
-    "astro-compress": "^2.2.3"
+    "@iconify-json/ri": "^1.1.19",
+    "@sendgrid/mail": "^8.1.0",
+    "astro": "^4.0.3",
+    "astro-compress": "^2.2.3",
+    "astro-icon": "latest",
+    "typescript": "^5.3.3",
+    "vercel": "^33.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "latest",
     "daisyui": "^4.4.17",
+    "postcss": "latest",
     "prettier": "^3.1.0",
     "prettier-plugin-astro": "^0.12.2",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.4.1"
   }
 }

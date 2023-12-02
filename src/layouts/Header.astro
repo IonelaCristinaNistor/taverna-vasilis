@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from "astro:assets";
+import localLogoImage from "../images/logo.png";
+import LinkBtn from "../components/LinkBtn.astro";
+import HamburgerMenu from "../components/HamburgerMenu.astro";
+import MenuLink from "../components/MenuLink.astro";
+import HorizontalMenu from "../components/HorizontalMenu.astro";
+---
+<div id="mobile-header" class="md:hidden flex justify-between items-center px-8 py-1 border-b-[1px] border-base-content">
+    <HamburgerMenu>
+        <MenuLink href="/">Home</MenuLink>
+        <MenuLink href="/menu">Menu</MenuLink>
+        <MenuLink href="/gallery">Gallery</MenuLink>
+        <MenuLink href="/contact">Contact</MenuLink>
+    </HamburgerMenu>
+
+    <div id="mobile-contact-links" class="flex flex-col text-right text-xs">
+        <span class="font-semibold mb-1">
+            <a href="tel:+03624 3187850">+03624 3187850</a>
+            <i class="fa-solid fa-phone ms-2"></i>
+        </span>
+        <span class="font-semibold">
+            <a href="mailto:Vasa@tavernavasilis.com">Vasa@tavernavasilis.com</a>
+            <i class="fa-regular fa-envelope ms-2"></i>
+        </span>
+    </div>
+</div>
+
+<div id="desktop-header" class="hidden md:flex justify-between items-center px-8 py-1 border-b-[1px] border-base-content">
+    <a href="/">
+        <Image src={localLogoImage} alt="Logo" class="w-24 py-2"/>
+    </a>
+
+    <div id="desktop-contact-links" class="flex flex-col text-end items-center">
+        <div>
+            <LinkBtn href="tel:+03624 3187850" class="btn-sm">
+                <i class="fa-solid fa-phone"></i>+03624 3187850
+            </LinkBtn>
+            <LinkBtn href="mailto:Vasa@tavernavasilis.com" class="btn-sm">
+                <i class="fa-regular fa-envelope"></i>Vasa@tavernavasilis.com
+            </LinkBtn>
+        </div>
+
+        <HorizontalMenu>
+            <MenuLink href="/">Home</MenuLink>
+            <MenuLink href="/menu">Menu</MenuLink>
+            <MenuLink href="/gallery">Gallery</MenuLink>
+            <MenuLink href="/contact">Contact</MenuLink>
+        </HorizontalMenu>
+    </div>
+
+    <div id="social-media-links" class="">
+        <LinkBtn href="https://www.instagram.com/a" class="btn-sm btn-square">
+            <Icon name="ri:instagram-fill" class="size-5" />
+        </LinkBtn>
+        <LinkBtn href="https://www.facebook.com/" class="btn-sm btn-square">
+            <Icon name="ri:facebook-fill" class="size-5" />
+        </LinkBtn>
+    </div>
+</div>

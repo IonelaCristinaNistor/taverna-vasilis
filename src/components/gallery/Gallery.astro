@@ -1,0 +1,27 @@
+---
+import GalleryImage from "./GalleryImage.astro";
+import image1 from "../../images/gallery1.jpg"
+import image2 from "../../images/gallery2.jpg"
+import image3 from "../../images/gallery3.jpg"
+import image4 from "../../images/gallery4.jpg"
+import image5 from "../../images/gallery5.jpg"
+import image6 from "../../images/gallery6.jpg"
+import image7 from "../../images/gallery7.jpg"
+---
+
+<div id="gallery" class="container px-5 py-2 lg:px-32 lg:pt-24 mb-20 max-w-full">
+    <div class="-m-1 flex flex-wrap md:-m-2">
+        <div class="flex w-5/4 flex-wrap md:w-1/2">
+            <GalleryImage image={image1}/>
+            <GalleryImage image={image2}/>
+            <GalleryImage image={image3}/>
+            <GalleryImage image={image4}/>
+    </div>
+        <div class="flex w-5/4 flex-wrap md:w-1/2">
+            <GalleryImage image={image5}/>
+            <GalleryImage image={image6}/>
+            <GalleryImage image={image7}/>
+            <GalleryImage image={image2}/>
+        </div>
+    </div>
+</div>

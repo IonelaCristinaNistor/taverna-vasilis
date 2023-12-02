@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import logoSilhouetteSvg from "../images/logo-silhouette.svg"
+import defaultHeroImage from "../images/hero.jpg";
+import HeroPhone from "../images/hero-phone.jpg"
+const { heading, subheading, image = defaultHeroImage } = Astro.props;
+---
+
+<div class="hero min-h-screen relative">
+    <Image src={image} alt="Hero Slider Image" class="w-screen h-full object-cover" />
+    <Image src={HeroPhone} alt="Hero Slider Image" class="md:hidden w-screen h-full object-cover" />
+    <div class="hero-overlay bg-black bg-opacity-70 min-w-full"></div>
+    <div class="hero-content flex-col text-center text-neutral-content">
+        <Image src={logoSilhouetteSvg} alt="Logo Silhouette" class="w-2/3 opacity-80 mb-4" />
+        <h1 class="text-6xl md:text-7xl 2xl:text-8xl">{heading}</h1>
+        <p class="text-3xl mb-14">{subheading}</p>
+        <slot />
+    </div>
+</div>

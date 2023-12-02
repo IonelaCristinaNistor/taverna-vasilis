@@ -1,0 +1,10 @@
+---
+const currentPath = Astro.url.pathname
+
+const { href } = Astro.props
+---
+<li>
+    <a {href} class={`text-xl underline-offset-8 pb-3 ${currentPath === href ? 'underline' : 'hover:underline'}`}>
+        <slot />
+    </a>
+</li>

@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+const { image } = Astro.props;
+---
+
+<div class="flex flex-col justify-center items-center border border-base-content rounded-3xl h-auto block-inline text-center">
+    <p class="text-9xl text-center mt-3">”</p>
+    <p class="mx-4 text-justify">
+        <p class="mx-2">
+      <slot />
+    </p>
+    </p>
+    <Image src= {image} alt="Avatar" class="rounded-full w-28 h-28 my-10" >
+</div>

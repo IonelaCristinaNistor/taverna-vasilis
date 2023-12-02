@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+const { image } = Astro.props;
+---
+
+<div class="w-1/2 p-1 md:p-2">
+    <Image
+        src={image}
+        alt="Gallery"
+        class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+    />
+</div>

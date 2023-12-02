@@ -1,0 +1,6 @@
+---
+const { href, class: classList } = Astro.props;
+---
+<a {href} class:list={[classList, "btn btn-ghost text-sm"]}>
+    <slot />
+</a>

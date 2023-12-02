@@ -1,0 +1,31 @@
+---
+import BookNowButton from "../BookNowButton.astro";
+import { Image } from 'astro:assets';
+const { title, description, image} = Astro.props;
+import separatorSvg from '../../images/separator.svg';
+---
+
+<div id="about" class="grid grid-cols-1 md:grid-cols-2 justify-center items-center my-20">
+    <div class="my-10 md:ml-40 px-8">
+        <div class="flex flex-col items-center justify-center max-w-lg mx-auto">
+            <p class="text-xl font-bold tracking-widest mb-6">
+                {title}
+            </p>
+
+            <Image src={separatorSvg} alt="Separator" class="w-28 mb-8" />
+
+            <h2 class="text-4xl xl:text-5xl mb-8 text-white">
+                Every Flavor Tells a Story
+            </h2>
+
+            <p class="text-justify hyphens-auto text-xl mb-10">
+                {description}
+            </p>
+
+            <BookNowButton href="/reservation"/>
+        </div>
+    </div>
+    <div class="my-6 flex md:w-1/2 mx-10">
+        <Image src={image} alt="Banner About" class="rounded-xl"/>
+    </div>
+</div>

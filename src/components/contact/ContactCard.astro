@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+const { image, h, text } = Astro.props;
+---
+
+<div class="card w-60 border border-primary my-1">
+    <figure>
+        <Image src={image} alt="Email Icon" class="mt-10 w-24 h-16 hover:animate-jump"/>
+    </figure>
+    <div class="card-body text-center">
+        <h1 class="card-title flex justify-center text-center text-2xl tracking-wider font-thin">{h}</h1>
+        <p class="font-thin">{text}</p>
+    </div>
+</div>
