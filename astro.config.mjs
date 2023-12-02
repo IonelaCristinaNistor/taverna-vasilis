@@ -7,6 +7,5 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), mdx()],
-  adapter: netlify(),
   site: "https://IonelaCristinaNistor.github.io/",
 });
