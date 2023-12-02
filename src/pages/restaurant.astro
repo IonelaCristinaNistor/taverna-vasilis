@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '@fortawesome/fontawesome-free/css/all.min.css';
----
 
+---
 <html data-theme="coffee" class="bg-black min-h-screen flex flex-col">
 <head>
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 </head>
-<Layout  title="Reservation">
+<Layout  title="Restaurant">
 	<main class="flex-grow">
   	<div id="topbar" class="navbar bg-black">
   <div class="flex-1">
@@ -35,7 +35,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <li><a href="/" class="text-xl hover:underline underline-offset-8">Home</a></li>
+      <li><a href="http://localhost:4321/" class="text-xl hover:underline underline-offset-8">Home</a></li>
 			<li><a href="/reservation" class="text-xl underline hover:underline underline-offset-8">Reservation</a></li>
       <li><a href="" class="text-xl hover:underline underline-offset-8">Menus</a></li>
 			<li><a href="/restaurant" class="text-xl hover:underline underline-offset-8">Restaurant</a></li>
@@ -46,10 +46,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="/" class="text-xl hover:underline underline-offset-8 hover:animate-jump">Home</a></li>
-			<li><a href="/reservation" class="text-xl hover:animate-jump underline hover:underline underline-offset-8">Reservation</a></li>
+      <li><a href="http://localhost:4321/" class="text-xl hover:underline underline-offset-8 hover:animate-jump">Home</a></li>
+			<li><a href="/reservation" class="text-xl hover:animate-jump hover:underline underline-offset-8">Reservation</a></li>
       <li><a href="" class="text-xl hover:animate-jump hover:underline underline-offset-8">Menus</a></li>
-			<li><a href="/restaurant" class="text-xl hover:animate-jump hover:underline underline-offset-8">Restaurant</a></li>
+			<li><a href="/restaurant" class="text-xl hover:animate-jump underline hover:underline underline-offset-8">Restaurant</a></li>
       <li><a href="/contact" class="text-xl hover:animate-jump hover:underline underline-offset-8">Contact</a></li>
     </ul>
   </div>
@@ -62,7 +62,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-screen">
-      <h1 class="font-forum tracking-widest text-9xl mb-10">~ Reservation ~</h1>
+      <h1 class="font-forum tracking-widest text-9xl mb-10">~ Restaurant ~</h1>
       <h1 class="font-forum tracking-widest text-7xl mb-10">Taverna Vasilis</h1>
       <p class="font-serif font-semibold text-6xl mb-10">Griechische Spezialitäten</p>
       <button class="btn btn-primary text-xl"><p class="mx-10 font-bold tracking-wide">Menu</p></button>
@@ -70,114 +70,58 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
   </div>
 </div>
 
-<section class="section reservation">
-  <div class="flex justify-center items-center h-screen">
-  <div class="grid grid-cols-2 gap-4 h-max my-10 text-center">
+ <!--       GALERY           -->
 
-    <div class="my-20 text-xl bg-black">
-
-      <form action="" method="POST" class="form-left">
-
-        <h2 class="text-6xl text-center font-forum tracking-wider">Online Reservation</h2>
-
-        <p class="my-4 text-orange-200">
-          Booking request <a href="tel:+88123123456" class="link text-orange-400">+88-123-123456</a>
-          or fill out the order form
-        </p>
-
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-5">
-          <input class="input input-bordered input-primary w-full max-w-xs bg-transparent" type="text" name="name" placeholder="Your Name *" autocomplete="on" required>
-          <input class="input input-bordered input-primary w-full max-w-xs bg-transparent" type="tel" name="phone" placeholder="Phone Number *" autocomplete="on" pattern="[0-9]*" title="Please enter only numeric characters" required>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-          <div class="relative">
-            <select class="input input-bordered input-primary w-full max-w-xs bg-transparent" name="person" required>
-              <option value="1-person">1 Person</option>
-              <option value="2-person">2 Person</option>
-              <option value="3-person">3 Person</option>
-              <option value="4-person">4 Person</option>
-              <option value="5-person">5 Person</option>
-              <option value="6-person">6 Person</option>
-              <option value="7-person">7 Person</option>
-            </select>
-            <ion-icon name="person-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-
-          <div class="relative">
-            <input  class="input input-bordered input-primary w-full max-w-xs bg-transparent"type="date" name="reservation-date" required>
-            <ion-icon name="calendar-clear-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-
-          <div class="relative">
-            <select class="input input-bordered input-primary w-full max-w-xs bg-transparent" name="time" required>
-              <option value="08:00am">08 : 00</option>
-              <option value="09:00am">09 : 00</option>
-              <option value="010:00am">10 : 00</option>
-              <option value="011:00am">11 : 00</option>
-              <option value="012:00am">12 : 00</option>
-              <option value="01:00pm">13 : 00</option>
-              <option value="02:00pm">14 : 00</option>
-              <option value="03:00pm">15 : 00</option>
-              <option value="04:00pm">16 : 00</option>
-              <option value="05:00pm">17 : 00</option>
-              <option value="06:00pm">18 : 00</option>
-              <option value="07:00pm">19 : 00</option>
-              <option value="08:00pm">20 : 00</option>
-              <option value="09:00pm">21 : 00</option>
-              <option value="10:00pm">22 : 00</option>
-            </select>
-            <ion-icon name="time-outline" class="absolute right-3 top-1/2 transform -translate-y-1/2" aria-hidden="true"></ion-icon>
-          </div>
-        </div>
-
-        <div>
-          <input class="input input-bordered flex justify-center input-primary w-full max-w-xs bg-transparent mb-5" type="email" name="email" placeholder="Email * " autocomplete="on" required>
-        </div>
-
-        <textarea class="input input-bordered flex justify-start input-primary w-full max-w-xs bg-transparent h-20 mb-5" name="message" placeholder="Message .  .  . " autocomplete="off"></textarea>
-
-        <button type="submit" class="btn btn-primary">
-          <span class="text-2xl font-forum w-60">Book A Table</span>
-        </button>
-
-      </form>
-
-     </div>
-
-     <div class="font-forum text-center text-xl space-y-3 mx-20 mb-20" style="background-image: url('form-pattern.png')">
-
-      <h2 class="text-5xl mt-20 mb-6 text-center tracking-wide">Contact Us</h2>
-
-      <p class="text-orange-200">Booking Request</p>
-
-      <a href="tel:+88123123456" class="hover:underline">+88-123-123456</a>
-
-      <p class="text-orange-200">Location</p>
-
-      <address>
-        Gothaer Str. 2, 99885 Ohrdruf
-      </address>
-
-      <p class="text-orange-200">Lunch Time</p>
-
-      <p>
-        Monday to Sunday <br>
-        11.00 am - 2.30pm
-      </p>
-
-      <p class="text-orange-200">Dinner Time</p>
-
-      <p>
-        Monday to Sunday <br>
-        05.00 pm - 10.00pm
-      </p>
-
+ <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24 mb-20">
+  <div class="-m-1 flex flex-wrap md:-m-2">
+    <div class="flex w-1/2 flex-wrap">
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGZvb2R8ZW58MHx8MHx8fDI%3D" />
+      </div>
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+      </div>
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+      </div>
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGZvb2R8ZW58MHx8MHx8fDI%3D" />
+      </div>
+    </div>
+    <div class="flex w-1/2 flex-wrap">
+      <div class="w-full p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+      </div>
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+      </div>
+      <div class="w-1/2 p-1 md:p-2">
+        <img
+          alt="gallery"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-150 transition duration-500 cursor-pointer"
+          src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGZvb2R8ZW58MHx8MHx8fDI%3D" />
+      </div>
     </div>
   </div>
-
-  </div>
-</section>
+</div>
 
 <div class="google-map">
   <iframe style="filter: invert(100%)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.0441625187277!2d10.732327100000001!3d50.8303459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a387a2ca359813%3A0x72e9c1db433442b3!2sGothaer%20Str.%202%2C%2099885%20Ohrdruf%2C%20Germania!5e0!3m2!1sro!2sro!4v1700773181778!5m2!1sro!2sro" 

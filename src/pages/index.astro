@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Reservation from './reservation.astro';
+import home from './index.astro';
 import '@fortawesome/fontawesome-free/css/all.min.css';
----
 
+---
 <html data-theme="coffee" class="bg-black min-h-screen flex flex-col">
 <head>
   <meta charset="UTF-8">
@@ -35,7 +37,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <li><a href="/" class="text-xl underline underline-offset-8">Home</a></li>
+      <li><a href="/index" class="text-xl underline underline-offset-8">Home</a></li>
 			<li><a href="/reservation" class="text-xl hover:underline underline-offset-8">Reservation</a></li>
       <li><a href="" class="text-xl hover:underline underline-offset-8">Menus</a></li>
 			<li><a href="/restaurant" class="text-xl hover:underline underline-offset-8">Restaurant</a></li>
@@ -46,7 +48,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="/" class="text-xl underline underline-offset-8 hover:animate-jump">Home</a></li>
+      <li><a href="http://localhost:4321/" class="text-xl underline underline-offset-8 hover:animate-jump">Home</a></li>
 			<li><a href="/reservation" class="text-xl hover:animate-jump hover:underline underline-offset-8">Reservation</a></li>
       <li><a href="" class="text-xl hover:animate-jump hover:underline underline-offset-8">Menus</a></li>
 			<li><a href="/restaurant" class="text-xl hover:animate-jump hover:underline underline-offset-8">Restaurant</a></li>
