@@ -47,14 +47,16 @@ import VerticalMenu from "../components/VerticalMenu.astro";
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mb-2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
-      11:00 - 14:00
-      <span>17:00 - 22:00</span>
+      <span class="font-bold italic text-xl">Tuesday, Wednesday, Thursday: </span>
+      <span class="font-bold text-xl">17:00 - 22:00</span>
+      <span class="font-bold italic text-xl pt-4">Friday, Saturday, Sunday:</span>
+      <span class="font-bold text-xl"> 11:00 - 14:00 / 17:00 am - 22:00 pm</span>
     </a>
   </div>
 
-  <Image src={separatorSvg} alt="Separator" class="w-32 mt-6 mb-12" />
+  <Image src={separatorSvg} alt="Separator" class="w-32 mt-2 mb-6" />
 
-  <div id="mobile-social-links" class="flex justify-center items-center mb-6">
+  <div id="mobile-social-links" class="flex justify-center items-center mb-4">
     <a href="" target="_blank">
       <i class="w-5 inline-block mx-2">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-6 h-6" fill="currentColor" viewBox="0 0 50 50">
@@ -88,13 +90,15 @@ import VerticalMenu from "../components/VerticalMenu.astro";
   <div class="relative">
     <Image src={logoTransparent} alt="Footer Logo Image" class="absolute w-60 top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
 
-    <div class="absolute flex flex-col justify-self-center place-items-center text-xl space-y-4 pt-80">
+    <div class="absolute flex flex-col justify-self-center place-items-center text-xl space-y-4 pt-64">
       <VerticalMenu href="https://maps.app.goo.gl/sECpygX6nF4FQqpf7">Gothaer Str. 2, 99885 Ohrdruf</VerticalMenu>
       <VerticalMenu href="mailto:ionvasa21@gmail.com">ionvasa21@gmail.com</VerticalMenu>
-      <span>Open : <span class="font-bold">11:00 am - 14:00 pm</span></span>
-      <span class="font-bold">17:00 am - 22:00 pm</span>
-
-      <span>Copyright © 2024 - Taverna Vasilis</span>
+        </span></span>
+        <span class="font-bold italic text-2xl">Tuesday, Wednesday, Thursday: </span>
+        <span class="font-bold text-2xl pb-4">17:00 - 22:00</span>
+        <span class="font-bold italic text-2xl">Friday, Saturday, Sunday:</span>
+        <span class="font-bold text-2xl"> 11:00 - 14:00 / 17:00 am - 22:00 pm</span>
+      <span class="pt-3">Copyright © 2024 - Taverna Vasilis</span>
     </div>
     
     <Image src={footerFormBackground} alt="Footer Form Background" class="max-w-none w-full" />
