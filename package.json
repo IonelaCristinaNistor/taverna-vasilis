@@ -20,6 +20,7 @@
     "astro": "^4.0.3",
     "astro-compress": "^2.2.3",
     "astro-icon": "latest",
+    "npm": "^10.8.3",
     "typescript": "^5.3.3",
     "vercel": "^33.2.0"
   },
