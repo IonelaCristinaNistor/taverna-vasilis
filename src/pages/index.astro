@@ -15,6 +15,8 @@ import about from "../images/gallery2.jpg"
 import service1 from "../images/service-1.jpg"
 import service2 from "../images/service-2.jpg"
 import service3 from "../images/service-3.jpg"
+import service4 from "../images/salad.jpg"
+import service5 from "../images/crumpi.jpeg"
 ---
 <Layout title="Taverna Vasilis">
     <Hero heading="Taverna Vasilis" subheading="Griechische Spezialitäten">
@@ -22,11 +24,17 @@ import service3 from "../images/service-3.jpg"
     </Hero>
 
     <Services>
-        <ServiceCard titleCard="Desserts" imageCard={service1}/>
         <div class="card w-96 bg-transparent shadow-xl xl:-mb-56">
-            <ServiceCard titleCard="Grills" imageCard={service2}/>
-        </div>
-        <ServiceCard titleCard="Weine" imageCard={service3}/>
+        <ServiceCard titleCard="Desserts" imageCard={service1} href="/Desert.pdf"/>           
+        <ServiceCard titleCard="Grills" imageCard={service2} href="/Grills.pdf"/>
+    </div>
+    <div class="card w-96 bg-transparent shadow-xl xl:-mb-56">
+    <ServiceCard titleCard="Salat" imageCard={service4} href="/Salate.pdf"/>
+    </div>
+        <div class="card w-96 bg-transparent shadow-xl xl:-mb-56">    
+        <ServiceCard titleCard="Getränke" imageCard={service3} href="/Getranke.pdf"/>
+        <ServiceCard titleCard="Vorspeise & Beilagen" imageCard={service5} href="/Vorspeise.pdf"/>
+    </div>
     </Services>
 
     <About title="Our Story"

@@ -1,16 +1,16 @@
 ---
 import { Image } from "astro:assets";
-const { titleCard, imageCard } = Astro.props;
+const { titleCard, imageCard, href } = Astro.props;
 ---
-<div class="card w-96 bg-transparent shadow-xl mb-10 my-10">
+<div class="card w-96 bg-transparent shadow-xl mb-20 my-10">
     <slot />
     <figure class="px-10 pt-10 mb-20">
-        <Image src={imageCard} alt="" class="absolute rounded-xl h-80 hover:brightness-125 hover:animate-jump"/>
+        <Image src={imageCard} alt="" class="absolute rounded-xl h-80 hover:brightness-125 hover:animate-jump mt-20"/>
     </figure>
-    <div class="card-body items-center text-center">
+    <div class="card-body items-center text-center mt-10">
         <h2 class="card-title relative mt-20 text-4xl font-thin tracking-wide text-primary">{titleCard}</h2>
         <div class="card-actions">
-            <a href="/menu" class="btn btn-outline btn-primary text-xl px-10">View Menu</a>
+            <a href={href} class="btn btn-outline btn-primary text-xl px-10">View Menu</a>
         </div>
     </div>
 </div>
